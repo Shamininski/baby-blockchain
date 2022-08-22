@@ -1,0 +1,1 @@
+# A class for managing a wallet, creating operations and data signing.

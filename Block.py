@@ -1,0 +1,1 @@
+# A class that allows to form a block with transactions.
