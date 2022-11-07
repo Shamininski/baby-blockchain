@@ -348,3 +348,11 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
+
+# My Environment 
+venv/
+
+# My keys files, your own will be genearated by the code.  
+priv_key.pem
+pub_key.pem
+data.sig
