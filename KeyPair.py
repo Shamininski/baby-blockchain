@@ -3,25 +3,27 @@ from ecdsa import SigningKey, VerifyingKey, SECP256k1
 
 class KeyPair:
         
-    def __init__(self, privateKey, publicKey):
-        self.privateKey = privateKey
-        self.publicKey = publicKey
+    # Refactored this construtor so as to call the genKeyPair function which returns a keypair. 
+    def __init__(self):
+        self.genKeyPair()        
+        # self.privateKey = privateKey
+        # self.publicKey = publicKey
             
     # privateKey, publicKey = '', ''
-    global privateKey, publicKey 
+    # global privateKey, publicKey    ===> This is rather unnecessary now
 
 
-    def genKeyPair():            
+    def genKeyPair(self):            
         # Generating the key pair from a SECP256K1 elliptic curve.
         global privateKey, publicKey
-        privateKey = SigningKey.generate(curve=SECP256k1)
-        publicKey = privateKey.get_verifying_key()
+        self.privateKey = SigningKey.generate(curve=SECP256k1)
+        self.publicKey = privateKey.get_verifying_key()
         
         with open("priv_key.pem", "wb") as f:
             f.write(privateKey.to_pem(format="pkcs8"))
         with open("pub_key.pem", "wb") as f:
             f.write(publicKey.to_pem())   
-        return privateKey, publicKey 
+        return self.privateKey, self.publicKey 
 
 
     def printKeyPair():    
